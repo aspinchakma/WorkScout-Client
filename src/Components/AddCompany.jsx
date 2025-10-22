@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
+import "./AddCompany.css";
 
 const AddCompany = () => {
   const [companyInfo, setCompanyInfo] = useState({
@@ -23,7 +24,6 @@ const AddCompany = () => {
     const { name, value, files } = e.target;
     if (name === "logo") {
       setCompanyInfo({ ...companyInfo, logo: files[0] });
-      console.log(files);
     } else if (name === "headerImage") {
       setCompanyInfo({ ...companyInfo, headerImage: files[0] });
     } else {
@@ -38,6 +38,9 @@ const AddCompany = () => {
     Swal.fire({
       title: "Creating Company. Please Wait!",
       allowOutsideClick: false,
+      customClass: {
+        title: "my-swal-title",
+      },
       didOpen: () => {
         Swal.showLoading();
       },
@@ -73,7 +76,6 @@ const AddCompany = () => {
         const dataTwo = await resImgTwo.json();
         if (data.success) {
           companyInfo.headerImage = dataTwo.data.url;
-          console.log(companyInfo);
 
           // sending data to the server
           const companDBData = await fetch("http://localhost:5000/companies", {
@@ -90,22 +92,30 @@ const AddCompany = () => {
               title: "Account created! Thanks for joining us.",
               icon: "success",
               draggable: true,
+              customClass: {
+                title: "my-swal-title",
+              },
             });
+            e.target.reset();
           }
           // clossing sweet alert
         }
       }
     } catch (error) {
+      console.log(error.code);
       Swal.close();
       Swal.fire({
         icon: "error",
-        title: `${error.code}`,
+        title: `Please Change photo or photo format.`,
+        customClass: {
+          title: "my-swal-title",
+        },
       });
     }
   };
   return (
-    <div className="w-[90%] lg:w-[77%] mx-auto">
-      <h3>Company Details</h3>
+    <div className="w-[90%] lg:w-[77%] mx-auto my-12">
+      <h3 className="text-2xl">Submit Company</h3>
       <form onSubmit={handleSubmit}>
         <div className="card-body">
           <fieldset className="fieldset grid grid-cols-1 gap-5">
@@ -302,7 +312,7 @@ const AddCompany = () => {
               <label className="label">Max size 2MB</label>
             </fieldset>
             <button className="mt-4 bg-[#26ae61] hover:bg-black py-3 text-white font-bold text-[15px] cursor-pointer border-none duration-700 w-fit px-5 rounded-lg">
-              Create Company
+              Submit Company
             </button>
           </fieldset>
         </div>
