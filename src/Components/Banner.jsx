@@ -11,7 +11,7 @@ const Banner = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="w-[90%] lg:w-[77%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 py-20">
+      <div className="w-[90%] lg:w-[77%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 py-20 lg:py-28">
         <div className="text-white">
           <h1 className="text-4xl font-medium">Make Bright Ideas Happen</h1>
           <p className="text-2xl text-[#9ebba2] mt-2">
@@ -20,9 +20,9 @@ const Banner = () => {
           <p className="text-[14px] bg-[#296832]  w-fit py-2 px-3 rounded-[4px] mt-6 mb-4">
             Who are you looking for?
           </p>
-          <div className="flex items-center bg-white px-3 py-2 rounded-lg justify-between">
+          <div className="flex items-center bg-white px-2 py-[7px] rounded-lg justify-between">
             <input
-              className="bg-white text-[#808080] flex-1 outline-0"
+              className="bg-white text-[#808080] flex-1 outline-0 pl-4"
               type="text"
               placeholder="Skill, Industry"
             />
@@ -87,14 +87,14 @@ const Banner = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white p-2 rounded-lg translate-y-[-20px] hover:translate-y-[-30px] duration-700 lg:block hidden">
+          <div className="bg-white p-2 rounded-lg translate-y-[-20px] hover:translate-y-[-30px] duration-700 lg:block hidden cursor-pointer">
             <img
               src="https://i.ibb.co.com/LD0HDTgF/4002892-e1700652027624.webp"
               alt="freelance photos"
             />
             <div className="text-center mt-5">
               <div className="flex items-center gap-2 justify-center">
-                <h3 className="font-semibold text-[20px] ">Aspin Chakma</h3>
+                <h3 className="font-semibold text-[20px] ">William Victor</h3>
 
                 <a className="my-anchor-element">
                   <img
