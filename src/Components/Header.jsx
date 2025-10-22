@@ -18,7 +18,7 @@ const Header = () => {
       className={`${
         scrolled
           ? "bg-white"
-          : "bg-[#195a22] border-b-2 border-b-[#477b4e] text-white"
+          : "bg-[#195a22] border-b-[1px] border-b-[#477b4e] text-white"
       } sticky  top-0 z-10`}
     >
       <div className="navbar w-[90%] lg:w-[77%] mx-auto lg:gap-3 lg:py-0 lg:min-h-0">
@@ -71,7 +71,7 @@ const Header = () => {
 
           <a>
             <img
-              className="w-[200px]"
+              className="w-[200px] px-2"
               src={`${
                 scrolled
                   ? "https://workscout.in/wp-content/uploads/2023/11/logo.png"
@@ -82,9 +82,10 @@ const Header = () => {
           </a>
         </div>
         <div
-          className={`navbar-center hidden lg:flex  flex-1 justify-center py-4 ${
-            scrolled ||
-            "border-r-2 border-l-[#477b4e] border-l-2  border-r-[#477b4e]"
+          className={`navbar-center hidden lg:flex  flex-1 justify-start py-4 pl-2 border-r-[1px]  border-l-[1px] ${
+            scrolled
+              ? "border-l-[#d9d9d9] border-r-[#d9d9d9] "
+              : " border-l-[#477b4e]  border-r-[#477b4e]"
           }`}
         >
           <ul className="menu menu-horizontal px-1">

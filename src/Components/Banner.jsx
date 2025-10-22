@@ -11,10 +11,10 @@ const Banner = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="w-[90%] lg:w-[77%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 py-20 lg:py-28">
+      <div className="w-[90%] lg:w-[77%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 py-20 lg:py-28">
         <div className="text-white">
-          <h1 className="text-4xl font-medium">Make Bright Ideas Happen</h1>
-          <p className="text-2xl text-[#9ebba2] mt-2">
+          <h1 className="text-[40px] font-medium">Make Bright Ideas Happen</h1>
+          <p className="text-2xl text-[#9ebba2] mt-1">
             Collaborate with top experts affordably!
           </p>
           <p className="text-[14px] bg-[#296832]  w-fit py-2 px-3 rounded-[4px] mt-6 mb-4">
