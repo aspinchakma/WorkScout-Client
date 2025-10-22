@@ -1,0 +1,23 @@
+.search-button {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.search-text {
+  position: relative;
+  left: 20px;
+  transition: all 0.3s;
+}
+.search-button:hover .search-text {
+  left: -200px;
+}
+
+.search-icon {
+  position: relative;
+  right: -200px;
+  transition: all 0.3s;
+}
+.search-button:hover .search-icon {
+  right: 35px;
+}
