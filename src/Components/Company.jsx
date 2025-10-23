@@ -1,9 +1,13 @@
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Company = ({ company }) => {
-  const { logo, slogan, name } = company;
+  const { logo, slogan, name, _id } = company;
   return (
-    <div className="border-2 border-[#e0e0e0] text-center py-6 rounded-[4px]">
+    <Link
+      to={`/companydetails/${_id}`}
+      className="border-2 border-[#e0e0e0] text-center py-6 rounded-[4px]"
+    >
       <img
         className="w-[100px] h-[100px] object-cover mx-auto"
         src={logo}
@@ -25,7 +29,7 @@ const Company = ({ company }) => {
           <FaStar className="text-[#dddddd] text-[20px]" />
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 
