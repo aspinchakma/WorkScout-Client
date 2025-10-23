@@ -1,9 +1,14 @@
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const CompanyData = ({ company }) => {
-  const { about, logo, slogan, name, location, size, avarageSalary } = company;
+  const { about, logo, slogan, name, location, size, avarageSalary, _id } =
+    company;
   return (
-    <div className="border-2 border-[#e0e0e0]  rounded-lg lg:p-[30px] p-[22px] grid grid-cols-1 lg:grid-cols-12">
+    <Link
+      to={`/companyDetails/${_id}`}
+      className="border-2 border-[#e0e0e0]  rounded-lg lg:p-[30px] p-[22px] grid grid-cols-1 lg:grid-cols-12"
+    >
       <div className="lg:col-span-3">
         <img
           className="w-full lg:w-[120px] h-[200px] lg:h-[120px] object-cover rounded-[4px]"
@@ -35,7 +40,7 @@ const CompanyData = ({ company }) => {
         </div>
         <p className="text-[#888]">{about.slice(0, 300)}...</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
