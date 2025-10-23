@@ -19,7 +19,7 @@ const Header = () => {
         scrolled
           ? "bg-white"
           : "bg-[#195a22] border-b-[1px] border-b-[#477b4e] text-white"
-      } sticky  top-0 z-10`}
+      } sticky  top-0 z-30`}
     >
       <div className="navbar w-[90%] lg:w-[77%] mx-auto lg:gap-3 lg:py-0 lg:min-h-0">
         <div className="navbar-start lg:w-fit">

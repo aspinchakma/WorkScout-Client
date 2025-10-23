@@ -99,7 +99,7 @@ const CompanyDetails = () => {
         </div>
 
         {/* others content */}
-        <div className="grid grid-col-1 lg:grid-cols-12 mt-8 gap-7 lg:gap-12">
+        <div className="grid grid-col-1 lg:grid-cols-12 mt-12 border-black gap-7 lg:gap-12">
           <div className="lg:col-span-8">
             <div>
               <h3 className="text-[20px] font-medium mb-8">About Use</h3>
