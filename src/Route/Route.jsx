@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddCompany from "../Components/AddCompany";
+import Companies from "../Components/Companies";
 import Home from "../Components/Home";
 import MainLayOut from "../Layouts/MainLayOut";
 
@@ -15,6 +16,10 @@ const Route = createBrowserRouter([
       {
         path: "/addcompany",
         Component: AddCompany,
+      },
+      {
+        path: "/companies",
+        Component: Companies,
       },
     ],
   },

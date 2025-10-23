@@ -15,7 +15,7 @@ const AddCompany = () => {
     location: "",
     size: "",
     avarageSalary: "",
-    About: "",
+    about: "",
     headerImage: "",
     industry: "",
     jobs: [],
