@@ -1,5 +1,6 @@
 import { updateProfile } from "firebase/auth";
 import { use, useState } from "react";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import AuthContext from "../Context/AuthContex";
 import { auth } from "../firebase/firebase.init";
@@ -68,9 +69,6 @@ const Signup = () => {
               photoURL: profileIMGBB,
             })
               .then(() => {
-                const user = result.user;
-                setUser(user);
-
                 // get creation time
                 const getTime = result?.user?.metadata?.creationTime;
                 // change to bd formate
@@ -105,6 +103,9 @@ const Signup = () => {
                   .then((result) => {
                     if (result.insertedId) {
                       Swal.close();
+
+                      //setUser
+                      setUser(finalUserInformation);
                       Swal.fire({
                         title: "Your Account Created!",
                         icon: "success",
@@ -253,7 +254,15 @@ const Signup = () => {
                 required
               ></textarea>
             </div>
-            <button className="btn btn-neutral mt-4">Sign Up</button>
+            <button className="bg-[#26ae61] w-full py-2 rounded-lg font-medium text-white border-[#26ae61] border-2 hover:bg-white hover:text-[#26ae61] duration-500 text-[16px] cursor-pointer">
+              Sign Up
+            </button>
+            <p className="text-center">
+              Have an account?
+              <Link className="text-blue-700 font-medium ml-2" to={`/signin`}>
+                Sign In
+              </Link>
+            </p>
           </form>
         </div>
       </div>
