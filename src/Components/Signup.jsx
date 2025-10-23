@@ -12,7 +12,7 @@ const Signup = () => {
     email: "",
     password: "",
     ratePerHour: "",
-    bid: [],
+    tasks: [],
     company: [],
     skills: [],
     photo: "",
@@ -82,7 +82,7 @@ const Signup = () => {
                   email: userInfo.email,
                   password: userInfo.password,
                   ratePerHour: userInfo.ratePerHour,
-                  bid: userInfo.bid,
+                  tasks: userInfo.tasks,
                   company: userInfo.company,
                   skills: userInfo.skills,
                   photo: profileIMGBB,
@@ -169,6 +169,8 @@ const Signup = () => {
       }
     } catch (error) {
       console.log(error.code);
+      Swal.close();
+    } finally {
       Swal.close();
     }
   };
