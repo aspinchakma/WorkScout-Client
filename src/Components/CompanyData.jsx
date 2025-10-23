@@ -1,4 +1,7 @@
 import { FaStar } from "react-icons/fa";
+import { IoLocationOutline } from "react-icons/io5";
+import { LuBadgeDollarSign } from "react-icons/lu";
+import { MdOutlinePeopleOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const CompanyData = ({ company }) => {
@@ -7,7 +10,7 @@ const CompanyData = ({ company }) => {
   return (
     <Link
       to={`/companyDetails/${_id}`}
-      className="border-2 border-[#e0e0e0]  rounded-lg lg:p-[30px] p-[22px] grid grid-cols-1 lg:grid-cols-12"
+      className="border-2 border-[#e0e0e0]  rounded-lg lg:p-[30px] p-[22px] grid grid-cols-1 lg:grid-cols-12 hover:border-l-green-600 hover:border-l-4 duration-700"
     >
       <div className="lg:col-span-3">
         <img
@@ -15,10 +18,20 @@ const CompanyData = ({ company }) => {
           src={logo}
           alt=""
         />
-        <div className="text-[#888] mt-4 space-y-2">
-          <p className="text-[15px]">{location}</p>
-          <p className="text-[15px]">{size}</p>
-          <p className="text-[15px]">{avarageSalary}</p>
+        <div className="text-[#888] mt-4 space-y-2 ">
+          <p className="text-[15px] flex items-center gap-2">
+            <IoLocationOutline className="text-lg" />
+            {location}
+          </p>
+          <p className="text-[15px] flex items-center gap-2">
+            {" "}
+            <MdOutlinePeopleOutline className="text-lg" />
+            {size}
+          </p>
+          <p className="text-[15px] flex items-center gap-2">
+            <LuBadgeDollarSign className="text-lg" />
+            {avarageSalary}
+          </p>
         </div>
       </div>
       <div className="lg:col-span-9">
