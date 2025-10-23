@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { updateProfile } from "firebase/auth";
+import { use, useState } from "react";
+import Swal from "sweetalert2";
+import AuthContext from "../Context/AuthContex";
+import { auth } from "../firebase/firebase.init";
 
 const Signup = () => {
+  const { creatingUser, setUser } = use(AuthContext);
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
@@ -26,6 +31,19 @@ const Signup = () => {
   const handleSignIn = async (e) => {
     e.preventDefault();
 
+    // showing sweet alert
+    // showing sweet alert
+    Swal.fire({
+      title: "Creating Your Account. Please Wait!",
+      allowOutsideClick: false,
+      customClass: {
+        title: "my-swal-title",
+      },
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
     const profile = new FormData();
     profile.append("image", userInfo.photo);
 
@@ -40,14 +58,121 @@ const Signup = () => {
       const data = await resImg.json();
       if (data.success) {
         const profileIMGBB = data.data.url;
-        console.log(profileIMGBB);
+
+        // creating user by google
+        creatingUser(userInfo.email, userInfo.password)
+          .then((result) => {
+            // updation user information
+            updateProfile(auth.currentUser, {
+              displayName: userInfo.name,
+              photoURL: profileIMGBB,
+            })
+              .then(() => {
+                const user = result.user;
+                setUser(user);
+
+                // get creation time
+                const getTime = result?.user?.metadata?.creationTime;
+                // change to bd formate
+                const date = new Date(getTime);
+                const bdTime = date.toLocaleString("en-BD", {
+                  timeZone: "Asia/Dhaka",
+                });
+
+                const finalUserInformation = {
+                  name: userInfo.name,
+                  email: userInfo.email,
+                  password: userInfo.password,
+                  ratePerHour: userInfo.ratePerHour,
+                  bid: userInfo.bid,
+                  company: userInfo.company,
+                  skills: userInfo.skills,
+                  photo: profileIMGBB,
+                  about: userInfo.about,
+                  designation: userInfo.designation,
+                  creationTime: bdTime,
+                };
+                console.log(finalUserInformation);
+                // sending user information to the server
+                fetch("http://localhost:5000/users", {
+                  method: "POST",
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                  body: JSON.stringify(finalUserInformation),
+                })
+                  .then((res) => res.json())
+                  .then((result) => {
+                    if (result.insertedId) {
+                      Swal.close();
+                      Swal.fire({
+                        title: "Your Account Created!",
+                        icon: "success",
+                        draggable: true,
+                        customClass: {
+                          title: "my-swal-title",
+                        },
+                      });
+
+                      // reset form
+                      e.target.reset();
+                    }
+                  });
+              })
+              .catch((error) => {
+                Swal.close();
+
+                if (error.code === "auth/email-already-in-use") {
+                  Swal.close();
+                  Swal.fire({
+                    icon: "error",
+                    title: `Your Email Already In Use!.`,
+                    customClass: {
+                      title: "my-swal-title",
+                    },
+                  });
+                }
+              });
+          })
+          .catch((error) => {
+            console.log(error.code);
+            Swal.close();
+            if (error.code === "auth/email-already-in-use") {
+              Swal.fire({
+                icon: "error",
+                title: `Your Email Already In Use!.`,
+                customClass: {
+                  title: "my-swal-title",
+                },
+              });
+            } else if (
+              error.code === "auth/password-does-not-meet-requirements"
+            ) {
+              Swal.fire({
+                icon: "error",
+                title: `Password must include uppercase, lowercase, number, and symbol.`,
+                customClass: {
+                  title: "my-swal-title",
+                },
+              });
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: `${error.code}`,
+                customClass: {
+                  title: "my-swal-title",
+                },
+              });
+            }
+          });
       }
     } catch (error) {
       console.log(error.code);
+      Swal.close();
     }
   };
   return (
-    <div className="w-[90%] lg:w-[77%] mx-auto flex items-center min-h-screen border-2 border-black">
+    <div className="w-[90%] lg:w-[77%] mx-auto flex items-center min-h-screen">
       <div className="card bg-base-100 shrink-0 shadow-2xl mx-auto my-12 ">
         <div className="card-body">
           <form onSubmit={handleSignIn} className=" grid grid-cols-1 gap-4">
@@ -60,6 +185,7 @@ const Signup = () => {
                   placeholder="Full Name"
                   name="name"
                   onChange={handleChanging}
+                  required
                 />
               </div>
               <div>
@@ -70,6 +196,7 @@ const Signup = () => {
                   placeholder="Designation"
                   name="designation"
                   onChange={handleChanging}
+                  required
                 />
               </div>
               <div>
@@ -80,6 +207,7 @@ const Signup = () => {
                   placeholder="Rate Per Hour"
                   name="ratePerHour"
                   onChange={handleChanging}
+                  required
                 />
               </div>
               <div>
@@ -90,6 +218,7 @@ const Signup = () => {
                   placeholder="Email"
                   name="email"
                   onChange={handleChanging}
+                  required
                 />
               </div>
               <div>
@@ -100,6 +229,7 @@ const Signup = () => {
                   placeholder="Password"
                   name="password"
                   onChange={handleChanging}
+                  required
                 />
               </div>
               <div>
@@ -109,6 +239,7 @@ const Signup = () => {
                   className="file-input w-full text-[#777]"
                   name="photo"
                   onChange={handleChanging}
+                  required
                 />
               </div>
             </div>
@@ -119,6 +250,7 @@ const Signup = () => {
                 placeholder="Bio"
                 name="about"
                 onChange={handleChanging}
+                required
               ></textarea>
             </div>
             <button className="btn btn-neutral mt-4">Sign Up</button>
