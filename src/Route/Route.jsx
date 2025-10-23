@@ -3,6 +3,8 @@ import AddCompany from "../Components/AddCompany";
 import Companies from "../Components/Companies";
 import CompanyDetails from "../Components/CompanyDetails";
 import Home from "../Components/Home";
+import SignIn from "../Components/SignIn";
+import Signup from "../Components/Signup";
 import Loading from "../Error&Spinner/Loading";
 import MainLayOut from "../Layouts/MainLayOut";
 
@@ -33,6 +35,14 @@ const Route = createBrowserRouter([
         hydrateFallbackElement: <Loading />,
       },
     ],
+  },
+  {
+    path: "signup",
+    Component: Signup,
+  },
+  {
+    path: "signin",
+    Component: SignIn,
   },
 ]);
 
