@@ -10,7 +10,6 @@ const Signup = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const path = location.state || "/";
-  console.log(location);
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
@@ -94,7 +93,6 @@ const Signup = () => {
                   designation: userInfo.designation,
                   creationTime: bdTime,
                 };
-                console.log(finalUserInformation);
                 // sending user information to the server
                 fetch("http://localhost:5000/users", {
                   method: "POST",

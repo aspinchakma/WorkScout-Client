@@ -7,7 +7,6 @@ const SignIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const path = location?.state || "/";
-  console.log(location);
   const handleSignIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;

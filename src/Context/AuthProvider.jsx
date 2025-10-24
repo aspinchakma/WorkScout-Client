@@ -45,7 +45,6 @@ const AuthProvider = ({ children }) => {
   const userSignOut = () => {
     return signOut(auth);
   };
-  console.log(user);
   const userInfo = {
     name: "Aspin Chakma",
     creatingUser,
@@ -55,7 +54,6 @@ const AuthProvider = ({ children }) => {
     userSignOut,
     isLoading,
   };
-  console.log(user);
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );

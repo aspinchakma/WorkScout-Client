@@ -3,6 +3,7 @@ import AddCompany from "../Components/AddCompany";
 import Companies from "../Components/Companies";
 import CompanyDetails from "../Components/CompanyDetails";
 import Home from "../Components/Home";
+import MyComapnies from "../Components/MyComapnies";
 import Profile from "../Components/Profile";
 import SignIn from "../Components/SignIn";
 import Signup from "../Components/Signup";
@@ -45,6 +46,14 @@ const Route = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/mycompanies",
+        element: (
+          <PrivateRoute>
+            <MyComapnies />
           </PrivateRoute>
         ),
       },

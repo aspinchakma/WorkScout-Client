@@ -3,7 +3,6 @@ import CompanyData from "./CompanyData";
 
 const Companies = () => {
   const data = useLoaderData();
-  console.log(data);
   return (
     <div>
       <div className="bg-[#f8f8f8]">
