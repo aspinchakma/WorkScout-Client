@@ -5,7 +5,6 @@ import MyCompany from "./MyCompany";
 
 const MyComapnies = () => {
   const { companies, setCompanies } = useContext(DataContextl);
-  console.log(companies);
 
   const handleDelete = (id) => {
     Swal.fire({

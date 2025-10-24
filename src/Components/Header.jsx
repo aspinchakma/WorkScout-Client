@@ -7,7 +7,6 @@ import AuthContext from "../Context/AuthContex";
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const { user } = use(AuthContext);
-  console.log(user);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
