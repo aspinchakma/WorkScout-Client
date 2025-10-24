@@ -1,8 +1,9 @@
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.init";
 import AuthContext from "./AuthContex";
 
@@ -16,11 +17,32 @@ const AuthProvider = ({ children }) => {
   const signInUser = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
+
+  // observer
+  useEffect(() => {
+    const unSubscribed = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // get data from database
+        const userEmail = user.email;
+        fetch(`http://localhost:5000/user/${userEmail}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setUser(data);
+          });
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unSubscribed();
+  }, []);
+  console.log(user);
   const userInfo = {
     name: "Aspin Chakma",
     creatingUser,
     setUser,
     signInUser,
+    user,
   };
   console.log(user);
   return (
