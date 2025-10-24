@@ -151,6 +151,11 @@ const AddTask = () => {
   return (
     <div className="w-[90%] lg:w-[77%] mx-auto my-8">
       <h3 className="text-2xl font-semibold mb-4">Post a Job</h3>
+      {!companies.length && (
+        <p className="text-error font-bold text-[22px]">
+          Please create a company account first in order to post a job.!
+        </p>
+      )}
       <div className="divider"></div>
       <form onSubmit={handlePost} className="card w-full">
         <fieldset className=" grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -335,7 +340,10 @@ const AddTask = () => {
               onChange={handleChange}
             />
           </fieldset>
-          <button className="w-full lg:col-span-2 bg-green-700 text-white font-semibold py-2 rounded-md text-[16px] cursor-pointer ">
+          <button
+            disabled={!companies.length}
+            className="w-full lg:col-span-2 bg-green-700 text-white font-semibold py-2 rounded-md text-[16px] cursor-pointer "
+          >
             Post
           </button>
         </fieldset>
