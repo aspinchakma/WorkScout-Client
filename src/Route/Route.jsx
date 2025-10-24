@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddCompany from "../Components/AddCompany";
+import AddTask from "../Components/AddTask";
 import Companies from "../Components/Companies";
 import CompanyDetails from "../Components/CompanyDetails";
 import Home from "../Components/Home";
@@ -54,6 +55,14 @@ const Route = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyComapnies />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "addtask",
+        element: (
+          <PrivateRoute>
+            <AddTask />
           </PrivateRoute>
         ),
       },

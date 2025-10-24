@@ -14,6 +14,7 @@ const DataProvider = ({ children }) => {
   }, [user?._id]);
   const storedData = {
     companies,
+    setCompanies,
   };
   return (
     <DataContextl.Provider value={storedData}>{children}</DataContextl.Provider>

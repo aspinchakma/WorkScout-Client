@@ -4,7 +4,7 @@ import DataContextl from "../Context/DataContextl";
 import MyCompany from "./MyCompany";
 
 const MyComapnies = () => {
-  const { companies } = useContext(DataContextl);
+  const { companies, setCompanies } = useContext(DataContextl);
   console.log(companies);
 
   const handleDelete = (id) => {
@@ -19,28 +19,53 @@ const MyComapnies = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(id);
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your Company Details has been deleted.",
-          icon: "success",
-        });
+        fetch(`http://localhost:5000/selectedCompanies/${id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Company Details has been deleted.",
+                icon: "success",
+              });
+              const finalResult = companies.filter(
+                (company) => company._id !== id
+              );
+              setCompanies(finalResult);
+            }
+          });
       }
     });
   };
   return (
     <div className="w-[90%] lg:w-[77%] mx-auto my-10">
-      <h2 className="text-[26px] font-medium text-[#777] mb-8">
-        You have created {companies?.length} companies
-      </h2>
-      <div className="grid grid-cols-1 gap-5">
-        {companies?.map((company) => (
-          <MyCompany
-            key={company?._id}
-            handleDelete={handleDelete}
-            company={company}
-          />
-        ))}
-      </div>
+      {companies ? (
+        <>
+          <h2 className="text-[26px] font-medium text-[#777] mb-8">
+            You have created {companies?.length} companies
+          </h2>
+          <div className="grid grid-cols-1 gap-5">
+            {companies?.map((company) => (
+              <MyCompany
+                key={company?._id}
+                handleDelete={handleDelete}
+                company={company}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="text-center">
+          <h3 className="text-warning text-3xl font-semibold">
+            No Data Found!
+          </h3>
+        </div>
+      )}
     </div>
   );
 };

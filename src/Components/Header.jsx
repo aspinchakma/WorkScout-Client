@@ -32,6 +32,9 @@ const Header = () => {
       <Link className="font-medium text-[15px]" to={"/mycompanies"}>
         My Company
       </Link>
+      <Link className="font-medium text-[15px]" to={"/addtask"}>
+        Add Task
+      </Link>
     </>
   );
   return (
