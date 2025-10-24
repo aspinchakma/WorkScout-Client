@@ -21,6 +21,7 @@ const AddTask = () => {
     maximumSalary: "",
     photo: "",
     creatorId: "",
+    deadline: "",
   });
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -38,7 +39,6 @@ const AddTask = () => {
         setCompanyInfo({ ...companyInfo, companyId: id, creatorId: userId });
       }
     } else if (name === "photo") {
-      console.log(files);
       // get photo
       setCompanyInfo({ ...companyInfo, photo: files[0] });
     } else {
@@ -95,6 +95,7 @@ const AddTask = () => {
           maximumSalary: companyInfo.maximumSalary,
           photo: photoLink,
           creatorId: companyInfo.creatorId,
+          deadline: companyInfo.deadline,
         };
 
         // sending to the server
@@ -127,8 +128,8 @@ const AddTask = () => {
             console.log(err.code);
             Swal.close();
             Swal.fire({
-              icon: "Try Again",
-              title: `Please Change photo or photo format.`,
+              icon: "error",
+              title: `Try Again`,
               customClass: {
                 title: "my-swal-title",
               },
@@ -308,6 +309,17 @@ const AddTask = () => {
               className="input w-full text-[#777] outline-0"
               placeholder="e.g.50000"
               name="maximumSalary"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label className="label text-[16px] mb-2 text-black font-medium">
+              Deadline <span className="text-[#777]"></span>
+            </label>
+            <input
+              type="date"
+              className="input w-full text-[#777] outline-0"
+              name="deadline"
               onChange={handleChange}
             />
           </div>

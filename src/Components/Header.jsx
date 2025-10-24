@@ -34,6 +34,9 @@ const Header = () => {
       <Link className="font-medium text-[15px]" to={"/addtask"}>
         Add Task
       </Link>
+      <Link className="font-medium text-[15px]" to={"/alltask"}>
+        All Task
+      </Link>
     </>
   );
   return (

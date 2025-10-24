@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddCompany from "../Components/AddCompany";
 import AddTask from "../Components/AddTask";
+import AllTask from "../Components/AllTask";
 import Companies from "../Components/Companies";
 import CompanyDetails from "../Components/CompanyDetails";
 import Home from "../Components/Home";
@@ -65,6 +66,16 @@ const Route = createBrowserRouter([
             <AddTask />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "alltask",
+        element: (
+          <PrivateRoute>
+            <AllTask />
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:5000/jobs"),
+        hydrateFallbackElement: <Loading />,
       },
     ],
   },
