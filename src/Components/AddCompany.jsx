@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import Swal from "sweetalert2";
+import AuthContext from "../Context/AuthContex";
 import "./AddCompany.css";
 
 const AddCompany = () => {
+  const { user } = use(AuthContext);
   const [companyInfo, setCompanyInfo] = useState({
     name: "",
     slogan: "",
@@ -19,6 +21,7 @@ const AddCompany = () => {
     headerImage: "",
     industry: "",
     jobs: [],
+    creatorId: "",
   });
   const handleChanging = (e) => {
     const { name, value, files } = e.target;
@@ -67,6 +70,9 @@ const AddCompany = () => {
       const data = await resImg.json();
       if (data.success) {
         companyInfo.logo = data.data.url;
+
+        // adding creator Id
+        companyInfo.creatorId = user._id;
 
         // image two
         const resImgTwo = await fetch(uploadUrl, {
