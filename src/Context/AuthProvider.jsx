@@ -10,6 +10,7 @@ import AuthContext from "./AuthContex";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [isLoading, setLoading] = useState(true);
 
   // creating user by email and  password
   const creatingUser = (email, password) => {
@@ -29,9 +30,11 @@ const AuthProvider = ({ children }) => {
           .then((res) => res.json())
           .then((data) => {
             setUser(data);
+            setLoading(false);
           });
       } else {
         setUser(null);
+        setLoading(false);
       }
     });
 
@@ -50,6 +53,7 @@ const AuthProvider = ({ children }) => {
     signInUser,
     user,
     userSignOut,
+    isLoading,
   };
   console.log(user);
   return (

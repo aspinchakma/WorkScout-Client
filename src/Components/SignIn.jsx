@@ -1,9 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import AuthContext from "../Context/AuthContex";
 const SignIn = () => {
   const { signInUser, setUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const path = location?.state || "/";
+  console.log(location);
   const handleSignIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -28,6 +32,7 @@ const SignIn = () => {
 
                 // reset form
                 e.target.reset();
+                navigate(path);
               }
             })
             .catch((err) => {
@@ -94,7 +99,11 @@ const SignIn = () => {
             </button>
             <p className="text-center mt-1">
               Don't have an accoutn?{" "}
-              <Link className="text-blue-700 font-medium ml-2" to={`/signup`}>
+              <Link
+                state={path}
+                className="text-blue-700 font-medium ml-2"
+                to={`/signup`}
+              >
                 Sign Up
               </Link>
             </p>

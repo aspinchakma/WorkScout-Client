@@ -1,12 +1,16 @@
 import { updateProfile } from "firebase/auth";
 import { use, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import AuthContext from "../Context/AuthContex";
 import { auth } from "../firebase/firebase.init";
 
 const Signup = () => {
   const { creatingUser, setUser } = use(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const path = location.state || "/";
+  console.log(location);
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
@@ -117,6 +121,9 @@ const Signup = () => {
 
                       // reset form
                       e.target.reset();
+
+                      // redirect user
+                      navigate(path);
                     }
                   });
               })

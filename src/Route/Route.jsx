@@ -8,6 +8,7 @@ import SignIn from "../Components/SignIn";
 import Signup from "../Components/Signup";
 import Loading from "../Error&Spinner/Loading";
 import MainLayOut from "../Layouts/MainLayOut";
+import PrivateRoute from "./PrivateRoute";
 
 const Route = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ const Route = createBrowserRouter([
       },
       {
         path: "/addcompany",
-        Component: AddCompany,
+        element: (
+          <PrivateRoute>
+            <AddCompany />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/companies",
@@ -37,7 +42,11 @@ const Route = createBrowserRouter([
       },
       {
         path: "/profile",
-        Component: Profile,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
     ],
   },

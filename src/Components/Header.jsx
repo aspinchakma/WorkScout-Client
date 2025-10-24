@@ -1,4 +1,6 @@
 import { use, useEffect, useState } from "react";
+import { FaUnlock } from "react-icons/fa";
+import { IoAddCircle } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import AuthContext from "../Context/AuthContex";
 
@@ -129,7 +131,24 @@ const Header = () => {
             </div>
           ) : (
             <>
-              <Link to={`/signin`}>Sign In</Link>
+              <Link
+                className="flex items-center gap-1 ml-2 hover:text-green-400 duration-700 "
+                to={`/signin`}
+              >
+                {" "}
+                <FaUnlock />
+                Sign In
+              </Link>
+              <div className="hidden lg:block ">
+                <Link
+                  className="flex items-center gap-1 ml-2  hover:text-green-400 duration-700"
+                  to={`/signup`}
+                >
+                  {" "}
+                  <IoAddCircle />
+                  Register
+                </Link>
+              </div>
             </>
           )}
         </div>
