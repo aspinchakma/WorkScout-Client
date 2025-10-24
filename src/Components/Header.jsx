@@ -19,13 +19,28 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
   }, []);
+
+  // links
+  const links = (
+    <>
+      <Link className="font-medium text-[15px]" to={"/"}>
+        Home
+      </Link>
+      <Link className="font-medium text-[15px]" to={"/addcompany"}>
+        Add Company
+      </Link>
+      <Link className="font-medium text-[15px]" to={"/mycompany"}>
+        My Company
+      </Link>
+    </>
+  );
   return (
     <div
       className={`${
         scrolled
           ? "bg-white"
           : "bg-[#195a22] border-b-[1px] border-b-[#477b4e] text-white"
-      } sticky  top-0 z-30`}
+      } sticky  top-0 z-30 py-2`}
     >
       <div className="navbar w-[90%] lg:w-[77%] mx-auto lg:gap-3 lg:py-0 lg:min-h-0">
         <div className="navbar-start lg:w-fit">
@@ -53,25 +68,9 @@ const Header = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-black"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {links}
             </ul>
           </div>
 
@@ -88,33 +87,13 @@ const Header = () => {
           </a>
         </div>
         <div
-          className={`navbar-center hidden lg:flex  flex-1 justify-start py-4 pl-2 border-r-[1px]  border-l-[1px] ${
+          className={`navbar-center hidden lg:flex  flex-1 justify-start py-4 pl-4 border-r-[1px]  border-l-[1px] gap-3 ${
             scrolled
               ? "border-l-[#d9d9d9] border-r-[#d9d9d9] "
               : " border-l-[#477b4e]  border-r-[#477b4e]"
           }`}
         >
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          {links}
         </div>
         <div className="navbar-end lg:w-fit">
           {user ? (
@@ -124,7 +103,7 @@ const Header = () => {
                   <img alt="Tailwind CSS Navbar component" src={user?.photo} />
                 </div>
               </Link>
-              <h3>
+              <h3 className="hidden lg:block">
                 {" "}
                 <span className="font-bold">Hi,</span> {user?.name}
               </h3>
