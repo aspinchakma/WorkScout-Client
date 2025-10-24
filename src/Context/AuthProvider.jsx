@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.init";
@@ -36,6 +37,11 @@ const AuthProvider = ({ children }) => {
 
     return () => unSubscribed();
   }, []);
+
+  // sign out method
+  const userSignOut = () => {
+    return signOut(auth);
+  };
   console.log(user);
   const userInfo = {
     name: "Aspin Chakma",
@@ -43,6 +49,7 @@ const AuthProvider = ({ children }) => {
     setUser,
     signInUser,
     user,
+    userSignOut,
   };
   console.log(user);
   return (

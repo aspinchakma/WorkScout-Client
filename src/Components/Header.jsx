@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import AuthContext from "../Context/AuthContex";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { user } = use(AuthContext);
+  console.log(user);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -111,7 +115,23 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end lg:w-fit">
-          <a className="btn">Button</a>
+          {user ? (
+            <div className="lg:flex lg:items-center lg:gap-2">
+              <Link to={`/profile`} className="avatar cursor-pointer">
+                <div className="w-10 rounded-full">
+                  <img alt="Tailwind CSS Navbar component" src={user?.photo} />
+                </div>
+              </Link>
+              <h3>
+                {" "}
+                <span className="font-bold">Hi,</span> {user?.name}
+              </h3>
+            </div>
+          ) : (
+            <>
+              <Link to={`/signin`}>Sign In</Link>
+            </>
+          )}
         </div>
       </div>
     </div>

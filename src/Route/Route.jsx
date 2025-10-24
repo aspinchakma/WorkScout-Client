@@ -3,6 +3,7 @@ import AddCompany from "../Components/AddCompany";
 import Companies from "../Components/Companies";
 import CompanyDetails from "../Components/CompanyDetails";
 import Home from "../Components/Home";
+import Profile from "../Components/Profile";
 import SignIn from "../Components/SignIn";
 import Signup from "../Components/Signup";
 import Loading from "../Error&Spinner/Loading";
@@ -33,6 +34,10 @@ const Route = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/companyDetails/${params.id}`),
         hydrateFallbackElement: <Loading />,
+      },
+      {
+        path: "/profile",
+        Component: Profile,
       },
     ],
   },
