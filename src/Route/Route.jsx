@@ -5,6 +5,7 @@ import AllTask from "../Components/AllTask";
 import Companies from "../Components/Companies";
 import CompanyDetails from "../Components/CompanyDetails";
 import Home from "../Components/Home";
+import JobDetails from "../Components/JobDetails";
 import MyComapnies from "../Components/MyComapnies";
 import Profile from "../Components/Profile";
 import SignIn from "../Components/SignIn";
@@ -75,6 +76,17 @@ const Route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("http://localhost:5000/jobs"),
+        hydrateFallbackElement: <Loading />,
+      },
+      {
+        path: "/tasks/:id",
+        element: (
+          <PrivateRoute>
+            <JobDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/jobs/${params.id}`),
         hydrateFallbackElement: <Loading />,
       },
     ],

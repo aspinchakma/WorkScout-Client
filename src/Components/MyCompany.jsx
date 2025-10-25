@@ -7,7 +7,7 @@ const MyCompany = ({ company, handleDelete }) => {
   const { about, logo, slogan, name, location, size, avarageSalary, _id } =
     company;
   return (
-    <div className="border-2 border-[#e0e0e0]  rounded-lg lg:p-[30px] p-[22px] grid grid-cols-1 lg:grid-cols-12 hover:border-l-green-600 hover:border-l-4 duration-700">
+    <div className="border-2 border-[#e0e0e0]  rounded-lg lg:p-[30px] p-[22px] grid grid-cols-1 lg:grid-cols-12 hover:border-l-green-600 hover:border-l-2 duration-700">
       <div className="lg:col-span-3">
         <img
           className="w-full lg:w-[120px] h-[200px] lg:h-[120px] object-cover rounded-[4px]"

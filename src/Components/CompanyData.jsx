@@ -10,7 +10,7 @@ const CompanyData = ({ company }) => {
   return (
     <Link
       to={`/companyDetails/${_id}`}
-      className="border-2 border-[#e0e0e0]  rounded-lg lg:p-[30px] p-[22px] grid grid-cols-1 lg:grid-cols-12 hover:border-l-green-600 hover:border-l-4 duration-700"
+      className="border-2 border-[#e0e0e0]  rounded-lg lg:p-[30px] p-[22px] grid grid-cols-1 lg:grid-cols-12 hover:border-l-green-600 hover:border-l-2 duration-700"
     >
       <div className="lg:col-span-3">
         <img
