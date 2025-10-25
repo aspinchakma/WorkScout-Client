@@ -151,7 +151,7 @@ const JobDetails = () => {
             {bidders.length ? (
               <>
                 <h2 className="text-lg font-semibold mt-5 mb-3">Bidders: </h2>
-                <div>
+                <div className="grid grid-cols-1 gap-5">
                   {bidders.map((bidder) => (
                     <BidderInfo key={bidder._id} bidder={bidder} />
                   ))}
