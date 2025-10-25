@@ -8,6 +8,7 @@ import Home from "../Components/Home";
 import JobDetails from "../Components/JobDetails";
 import MyComapnies from "../Components/MyComapnies";
 import MyPosts from "../Components/MyPosts";
+import MyWork from "../Components/MyWork";
 import Profile from "../Components/Profile";
 import SignIn from "../Components/SignIn";
 import Signup from "../Components/Signup";
@@ -34,13 +35,21 @@ const Route = createBrowserRouter([
       },
       {
         path: "/companies",
-        Component: Companies,
+        element: (
+          <PrivateRoute>
+            <Companies />
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:5000/companies"),
         hydrateFallbackElement: <Loading />,
       },
       {
         path: "/companyDetails/:id",
-        element: <CompanyDetails />,
+        element: (
+          <PrivateRoute>
+            <CompanyDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/companyDetails/${params.id}`),
         hydrateFallbackElement: <Loading />,
@@ -96,6 +105,14 @@ const Route = createBrowserRouter([
           <PrivateRoute>
             {" "}
             <MyPosts />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myworks",
+        element: (
+          <PrivateRoute>
+            <MyWork />
           </PrivateRoute>
         ),
       },

@@ -41,7 +41,10 @@ const Header = () => {
         My Posts
       </Link>
       <Link className="font-medium text-[15px]" to={"/companies"}>
-        All Companies
+        Companies
+      </Link>
+      <Link className="font-medium text-[15px]" to={"/myworks"}>
+        My Works
       </Link>
     </>
   );

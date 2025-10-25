@@ -72,7 +72,7 @@ const JobDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-2  w-[90%] lg:w-[77%] mx-auto lg:items-center">
           <div className="lg:col-span-2 rounded-md">
             <img
-              className=" w-36 h-36 mx-auto p-3 rounded-md bg-white"
+              className=" w-36 h-36 mx-auto p-3 rounded-md bg-white object-cover"
               src={company?.logo}
               alt=""
             />
