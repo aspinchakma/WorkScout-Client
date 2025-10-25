@@ -127,7 +127,7 @@ const CompanyDetails = () => {
                   <h3 className="text-[20px] mb-8 font-medium">
                     Open Positions
                   </h3>
-                  <div className="grid grid-cols-1 gap-6">
+                  <div className="grid grid-cols-1 gap-5">
                     {jobsThisCompany?.map((task) => (
                       <ShowingTask key={task._id} task={task} />
                     ))}

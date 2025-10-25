@@ -31,7 +31,8 @@ const AuthProvider = ({ children }) => {
           .then((data) => {
             setUser(data);
             setLoading(false);
-          });
+          })
+          .catch((err) => console.log(err));
       } else {
         setUser(null);
         setLoading(false);
