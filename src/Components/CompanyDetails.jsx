@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   FaFacebook,
   FaLink,
@@ -11,8 +12,11 @@ import { LiaIndustrySolid } from "react-icons/lia";
 import { MdEmail } from "react-icons/md";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { useLoaderData } from "react-router-dom";
+import ShowingTask from "./ShowingTask";
 
 const CompanyDetails = () => {
+  const [jobsThisCompany, setJobsThisComapny] = useState([]);
+
   const compay = useLoaderData();
   const {
     about,
@@ -29,7 +33,17 @@ const CompanyDetails = () => {
     slogan,
     twitter,
     website,
+    _id,
   } = compay;
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/jobs/companyDetails/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setJobsThisComapny(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div className="relative">
       <img
@@ -108,8 +122,17 @@ const CompanyDetails = () => {
 
             {/* open jobs section */}
             <div className="my-8">
-              {compay?.jobs?.length ? (
-                <h3 className="text-[20px] font-medium">Open Positions</h3>
+              {jobsThisCompany?.length ? (
+                <div>
+                  <h3 className="text-[20px] mb-8 font-medium">
+                    Open Positions
+                  </h3>
+                  <div>
+                    {jobsThisCompany?.map((task) => (
+                      <ShowingTask key={task._id} task={task} />
+                    ))}
+                  </div>
+                </div>
               ) : (
                 <h3 className="text-[20px] font-medium text-red-800">
                   No Job Available Now!
