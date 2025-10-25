@@ -5,6 +5,7 @@ import { LuBuilding2 } from "react-icons/lu";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import AuthContext from "../Context/AuthContex";
+import BidderInfo from "./BidderInfo";
 
 const JobDetails = () => {
   const job = useLoaderData();
@@ -21,11 +22,23 @@ const JobDetails = () => {
   const [company, SetCompany] = useState({});
   const [deliveryDay, setDeliveryDay] = useState(1);
   const [biddingAmoutInput, setBiddingAmout] = useState(null);
+  const [bidders, setBidders] = useState([]);
+
   useEffect(() => {
     fetch(`http://localhost:5000/companydetails/${companyId}`)
       .then((res) => res.json())
       .then((data) => SetCompany(data))
       .catch((err) => console.log(err));
+  }, []);
+
+  // get bidder info
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/bids/jobDetails/${job._id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBidders(data);
+      });
   }, []);
 
   const remainingDays = parseISO(deadline);
@@ -132,6 +145,24 @@ const JobDetails = () => {
         <div className="lg:col-span-8">
           <h3 className="text-2xl mb-3 font-medium">Project Description: </h3>
           <p className="text-[#777] leading-9">{description}</p>
+
+          {/* Bidders Information */}
+          <div>
+            {bidders.length ? (
+              <>
+                <h2 className="text-lg font-semibold mt-5 mb-3">Bidders: </h2>
+                <div>
+                  {bidders.map((bidder) => (
+                    <BidderInfo key={bidder._id} bidder={bidder} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <h3 className="text-xl font-semibold text-warning">
+                No Bidders Inforamtion
+              </h3>
+            )}
+          </div>
         </div>
         <div className="lg:col-span-4">
           <h3 className="text-[#289c41] bg-[#e7f8ec] text-center py-3 rounded-md">
