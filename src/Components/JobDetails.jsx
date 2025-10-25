@@ -3,6 +3,7 @@ import { use, useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { LuBuilding2 } from "react-icons/lu";
 import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 import AuthContext from "../Context/AuthContex";
 
 const JobDetails = () => {
@@ -31,10 +32,12 @@ const JobDetails = () => {
   const reaminingTimeFinals = formatDistanceToNow(remainingDays, {
     addSuffix: true,
   });
-  console.log(job);
   const handleBid = () => {
     if (biddingAmoutInput <= 0) {
-      alert("Please Write Amount!");
+      Swal.fire({
+        title: "Please Write Bid Ammount!",
+        icon: "error",
+      });
       return;
     }
     const biddingInfo = {
@@ -44,7 +47,23 @@ const JobDetails = () => {
       biddingAmount: biddingAmoutInput,
     };
 
-    console.log(biddingInfo);
+    // send to the server
+    fetch("http://localhost:5000/bids", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(biddingInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Submitted!",
+            icon: "success",
+          });
+        }
+      });
   };
   return (
     <>
