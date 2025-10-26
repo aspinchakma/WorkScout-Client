@@ -64,14 +64,4 @@ While developing **Worksout**, I learned:
 
 ---
 
-### Project Screenshots
-
-![HOME Banner]("https://github.com/user-attachments/assets/d77f4f03-0713-4a78-9cb4-14f76c7d9831")
-![Comapanies In Home Page]("./images/two.png")
-![Freelancers List In Home Page]("https://github.com/aspinchakma/WorkScout-Client/blob/main/images/3.png?raw=true")
-![All Task or All Jobs Post]("./images/allTask.png")
-![Company Details Page]("./images/companyDetails.png")
-![Job Details Page]("./images/jobDetails.png")
-![My Posted Jobs Page]("./images/myJobPost.png")
-
 > ✨ _This project helped me understand real-world development workflows and improved my full-stack problem-solving mindset._
