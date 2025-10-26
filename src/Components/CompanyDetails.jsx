@@ -37,7 +37,7 @@ const CompanyDetails = () => {
   } = compay;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs/companyDetails/${_id}`)
+    fetch(`https://workscout-server.onrender.com/jobs/companyDetails/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setJobsThisComapny(data);

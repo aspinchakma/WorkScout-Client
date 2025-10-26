@@ -46,7 +46,7 @@ const Route = createBrowserRouter([
             <Companies />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/companies"),
+        loader: () => fetch("https://workscout-server.onrender.com/companies"),
         hydrateFallbackElement: <Loading />,
       },
       {
@@ -57,7 +57,9 @@ const Route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/companyDetails/${params.id}`),
+          fetch(
+            `https://workscout-server.onrender.com/companyDetails/${params.id}`
+          ),
         hydrateFallbackElement: <Loading />,
       },
       {
@@ -91,7 +93,7 @@ const Route = createBrowserRouter([
             <AllTask />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/jobs"),
+        loader: () => fetch("https://workscout-server.onrender.com/jobs"),
         hydrateFallbackElement: <Loading />,
       },
       {
@@ -102,7 +104,7 @@ const Route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobs/${params.id}`),
+          fetch(`https://workscout-server.onrender.com/jobs/${params.id}`),
         hydrateFallbackElement: <Loading />,
       },
       {
@@ -129,7 +131,7 @@ const Route = createBrowserRouter([
             <AllFreeLancer />
           </PrivateRoute>
         ),
-        loader: () => fetch(`http://localhost:5000/users`),
+        loader: () => fetch(`https://workscout-server.onrender.com/users`),
         hydrateFallbackElement: <Loading />,
       },
       {
@@ -140,14 +142,16 @@ const Route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/users/userProfile/${params.id}`),
+          fetch(
+            `https://workscout-server.onrender.com/users/userProfile/${params.id}`
+          ),
         hydrateFallbackElement: <Loading />,
       },
       {
         path: "/workedit/:id",
         element: <WorkEdit />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/singlebid/${params.id}`),
+          fetch(`https://workscout-server.onrender.com/singlebid/${params.id}`),
         hydrateFallbackElement: <Loading />,
       },
     ],

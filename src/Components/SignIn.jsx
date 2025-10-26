@@ -15,7 +15,7 @@ const SignIn = () => {
       .then((result) => {
         if (result.user.email) {
           // load data from server
-          fetch(`http://localhost:5000/user/${email}`)
+          fetch(`https://workscout-server.onrender.com/user/${email}`)
             .then((res) => res.json())
             .then((data) => {
               if (data._id) {

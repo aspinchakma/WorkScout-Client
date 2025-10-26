@@ -5,7 +5,7 @@ const BidderInfo = ({ bidder }) => {
   const { userId, deliveryTime, biddingAmount } = bidder;
   const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/users/userInfo/${userId}`)
+    fetch(`https://workscout-server.onrender.com/users/userInfo/${userId}`)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
   }, []);

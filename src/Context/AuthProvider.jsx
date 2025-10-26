@@ -25,7 +25,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribed = onAuthStateChanged(auth, (user) => {
       if (user && user.email) {
-        console.log("inside observer", user);
         setCurrentEmail(user.email);
       } else {
         setCurrentEmail("");
@@ -39,7 +38,7 @@ const AuthProvider = ({ children }) => {
   // get all users information
   useEffect(() => {
     if (currentEmail) {
-      fetch(`http://localhost:5000/users`)
+      fetch(`https://workscout-server.onrender.com/users`)
         .then((res) => res.json())
         .then((data) => {
           // setUser(data);

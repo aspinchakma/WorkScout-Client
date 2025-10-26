@@ -6,7 +6,7 @@ const MyPosts = () => {
   const { user } = use(AuthContext);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs/user/${user._id}`)
+    fetch(`https://workscout-server.onrender.com/jobs/user/${user._id}`)
       .then((res) => res.json())
       .then((data) => setPosts(data))
       .catch((err) => {

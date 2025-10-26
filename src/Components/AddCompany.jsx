@@ -87,13 +87,16 @@ const AddCompany = () => {
           companyInfo.headerImage = dataTwo.data.url;
 
           // sending data to the server
-          const companDBData = await fetch("http://localhost:5000/companies", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(companyInfo),
-          });
+          const companDBData = await fetch(
+            "https://workscout-server.onrender.com/companies",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(companyInfo),
+            }
+          );
           const result = await companDBData.json();
           if (result.insertedId) {
             Swal.close();

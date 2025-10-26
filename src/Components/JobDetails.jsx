@@ -25,14 +25,14 @@ const JobDetails = () => {
   const [bidders, setBidders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/companydetails/${companyId}`)
+    fetch(`https://workscout-server.onrender.com/companydetails/${companyId}`)
       .then((res) => res.json())
       .then((data) => SetCompany(data))
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bids/jobDetails/${job._id}`)
+    fetch(`https://workscout-server.onrender.com/bids/jobDetails/${job._id}`)
       .then((res) => res.json())
       .then((data) => {
         setBidders(data);
@@ -58,7 +58,7 @@ const JobDetails = () => {
       biddingAmount: biddingAmoutInput,
     };
     // send to the server
-    fetch("http://localhost:5000/bids", {
+    fetch("https://workscout-server.onrender.com/bids", {
       method: "POST",
       headers: {
         "content-type": "application/json",

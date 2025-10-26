@@ -17,7 +17,7 @@ const MyComapnies = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selectedCompanies/${id}`, {
+        fetch(`https://workscout-server.onrender.com/selectedCompanies/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",

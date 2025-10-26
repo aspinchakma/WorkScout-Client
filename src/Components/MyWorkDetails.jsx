@@ -5,7 +5,7 @@ const MyWorkDetails = ({ bid, deleteWork }) => {
   const { jobId, deliveryTime, biddingAmount } = bid;
   const [job, setJob] = useState();
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs/${jobId}`)
+    fetch(`https://workscout-server.onrender.com/jobs/${jobId}`)
       .then((res) => res.json())
       .then((data) => {
         setJob(data);

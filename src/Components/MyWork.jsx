@@ -7,7 +7,7 @@ const MyWork = () => {
   const { user } = useContext(AuthContext);
   const [bids, setBids] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/bids/${user?._id}`)
+    fetch(`https://workscout-server.onrender.com/bids/${user?._id}`)
       .then((res) => res.json())
       .then((data) => {
         setBids(data);
@@ -26,7 +26,7 @@ const MyWork = () => {
       if (result.isConfirmed) {
         // delete
 
-        fetch(`http://localhost:5000/bids/${id}`, {
+        fetch(`https://workscout-server.onrender.com/bids/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",

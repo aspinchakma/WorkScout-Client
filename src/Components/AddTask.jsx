@@ -99,7 +99,7 @@ const AddTask = () => {
         };
 
         // sending to the server
-        fetch("http://localhost:5000/jobs", {
+        fetch("https://workscout-server.onrender.com/jobs", {
           method: "POST",
           headers: {
             "content-type": "application/json",

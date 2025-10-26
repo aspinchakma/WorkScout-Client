@@ -94,7 +94,7 @@ const Signup = () => {
                   creationTime: bdTime,
                 };
                 // sending user information to the server
-                fetch("http://localhost:5000/users", {
+                fetch("https://workscout-server.onrender.com/users", {
                   method: "POST",
                   headers: {
                     "content-type": "application/json",

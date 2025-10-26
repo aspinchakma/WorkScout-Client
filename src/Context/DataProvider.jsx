@@ -6,7 +6,9 @@ const DataProvider = ({ children }) => {
   const user = use(AuthContext)?.user;
   const [companies, setCompanies] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/selectedCompanies/${user?._id}`)
+    fetch(
+      `https://workscout-server.onrender.com/selectedCompanies/${user?._id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCompanies(data);

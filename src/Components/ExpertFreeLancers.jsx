@@ -5,7 +5,7 @@ import FreeLancer from "./FreeLancer";
 const ExpertFreeLancers = () => {
   const [freelancers, setFreelancers] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/users/limitedData")
+    fetch("https://workscout-server.onrender.com/users/limitedData")
       .then((res) => res.json())
       .then((data) => setFreelancers(data));
   }, []);

@@ -6,7 +6,7 @@ const WorkEdit = () => {
   const data = useLoaderData();
   const [job, setJob] = useState();
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs/${data.jobId}`)
+    fetch(`https://workscout-server.onrender.com/jobs/${data.jobId}`)
       .then((res) => res.json())
       .then((data) => {
         setJob(data);
@@ -17,7 +17,7 @@ const WorkEdit = () => {
 
     const deliveryTime = e.target.deliveryTime.value;
     const biddingAmount = e.target.biddingAmount.value;
-    fetch(`http://localhost:5000/singlebid/${data._id}`, {
+    fetch(`https://workscout-server.onrender.com/singlebid/${data._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

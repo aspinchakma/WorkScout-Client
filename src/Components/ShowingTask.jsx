@@ -15,7 +15,7 @@ const ShowingTask = ({ task }) => {
   } = task;
   const [company, SetCompany] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/companydetails/${companyId}`)
+    fetch(`https://workscout-server.onrender.com/companydetails/${companyId}`)
       .then((res) => res.json())
       .then((data) => SetCompany(data))
       .catch((err) => console.log(err));

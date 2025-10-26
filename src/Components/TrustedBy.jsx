@@ -5,7 +5,7 @@ import Company from "./Company";
 const TrustedBy = () => {
   const [companies, setCompanies] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/companies/3")
+    fetch("https://workscout-server.onrender.com/companies/3")
       .then((res) => res.json())
       .then((data) => {
         setCompanies(data);
