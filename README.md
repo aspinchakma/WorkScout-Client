@@ -66,7 +66,7 @@ While developing **Worksout**, I learned:
 
 ### Project Screenshots
 
-![HOME Banner]("./images/homeBanner.png")
+![HOME Banner]("https://github.com/user-attachments/assets/d77f4f03-0713-4a78-9cb4-14f76c7d9831")
 ![Comapanies In Home Page]("./images/two.png")
 ![Freelancers List In Home Page]("./images/3.png")
 ![All Task or All Jobs Post]("./images/allTask.png")
