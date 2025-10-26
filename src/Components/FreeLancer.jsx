@@ -6,7 +6,7 @@ const FreeLancer = ({ freelancer, index }) => {
     <div
       className={`${
         (index + 1) % 2 === 0 ? "bg-[#f9f9f9]" : "bg-white"
-      } grid grid-cols-1 lg:grid-cols-12 p-7 lg:p-8 items-center border-l-4 border-l-white hover:border-l-green-700 duration-700 cursor-pointer`}
+      } grid grid-cols-1 lg:grid-cols-12 p-7 lg:p-8 items-center border-l-4 border-l-white hover:border-l-green-700 duration-700 cursor-pointer `}
     >
       <div className="lg:col-span-2">
         <img

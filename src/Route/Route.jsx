@@ -11,6 +11,7 @@ import JobDetails from "../Components/JobDetails";
 import MyComapnies from "../Components/MyComapnies";
 import MyPosts from "../Components/MyPosts";
 import MyWork from "../Components/MyWork";
+import PageError from "../Components/PageError";
 import Profile from "../Components/Profile";
 import SignIn from "../Components/SignIn";
 import Signup from "../Components/Signup";
@@ -22,10 +23,12 @@ const Route = createBrowserRouter([
   {
     path: "/",
     Component: MainLayOut,
+    errorElement: <PageError />,
     children: [
       {
         path: "/",
         Component: Home,
+        errorElement: <PageError />,
       },
       {
         path: "/addcompany",
