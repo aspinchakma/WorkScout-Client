@@ -29,6 +29,12 @@ const MyWorkDetails = ({ bid, deleteWork }) => {
         >
           Delete
         </button>
+        <Link
+          className="bg-blue-700 px-2 py-1 rounded-md text-white border-2 border-blue-700 hover:bg-white hover:text-blue-700 duration-700 font-semibold inline-block"
+          to={`/workedit/${bid?._id}`}
+        >
+          See Job Details
+        </Link>
       </div>
     </div>
   );

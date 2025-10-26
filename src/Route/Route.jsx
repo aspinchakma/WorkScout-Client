@@ -15,6 +15,7 @@ import PageError from "../Components/PageError";
 import Profile from "../Components/Profile";
 import SignIn from "../Components/SignIn";
 import Signup from "../Components/Signup";
+import WorkEdit from "../Components/WorkEdit";
 import Loading from "../Error&Spinner/Loading";
 import MainLayOut from "../Layouts/MainLayOut";
 import PrivateRoute from "./PrivateRoute";
@@ -140,6 +141,13 @@ const Route = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/users/userProfile/${params.id}`),
+        hydrateFallbackElement: <Loading />,
+      },
+      {
+        path: "/workedit/:id",
+        element: <WorkEdit />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/singlebid/${params.id}`),
         hydrateFallbackElement: <Loading />,
       },
     ],
