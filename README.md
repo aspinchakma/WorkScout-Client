@@ -68,7 +68,7 @@ While developing **Worksout**, I learned:
 
 ![HOME Banner]("https://github.com/user-attachments/assets/d77f4f03-0713-4a78-9cb4-14f76c7d9831")
 ![Comapanies In Home Page]("./images/two.png")
-![Freelancers List In Home Page]("https://i.ibb.co.com/1wC3cJk/3.png")
+![Freelancers List In Home Page]("https://github.com/aspinchakma/WorkScout-Client/blob/main/images/3.png?raw=true")
 ![All Task or All Jobs Post]("./images/allTask.png")
 ![Company Details Page]("./images/companyDetails.png")
 ![Job Details Page]("./images/jobDetails.png")
