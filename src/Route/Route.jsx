@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddCompany from "../Components/AddCompany";
 import AddTask from "../Components/AddTask";
+import AllFreeLancer from "../Components/AllFreeLancer";
 import AllTask from "../Components/AllTask";
 import Companies from "../Components/Companies";
 import CompanyDetails from "../Components/CompanyDetails";
+import FreeLancerProfile from "../Components/FreeLancerProfile";
 import Home from "../Components/Home";
 import JobDetails from "../Components/JobDetails";
 import MyComapnies from "../Components/MyComapnies";
@@ -113,6 +115,24 @@ const Route = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyWork />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/allfreelancers",
+        element: (
+          <PrivateRoute>
+            <AllFreeLancer />
+          </PrivateRoute>
+        ),
+        loader: () => fetch(`http://localhost:5000/users`),
+        hydrateFallbackElement: <Loading />,
+      },
+      {
+        path: "/freelancerProfile/:id",
+        element: (
+          <PrivateRoute>
+            <FreeLancerProfile />
           </PrivateRoute>
         ),
       },

@@ -1,6 +1,6 @@
 import Banner from "./Banner";
+import ExpertFreeLancers from "./ExpertFreeLancers";
 import PostYourTask from "./PostYourTask";
-import Test from "./Test";
 import TrustedBy from "./TrustedBy";
 
 const Home = () => {
@@ -8,8 +8,8 @@ const Home = () => {
     <div>
       <Banner />
       <TrustedBy />
+      <ExpertFreeLancers />
       <PostYourTask />
-      <Test />
     </div>
   );
 };

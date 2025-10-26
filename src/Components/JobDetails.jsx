@@ -10,6 +10,7 @@ import BidderInfo from "./BidderInfo";
 const JobDetails = () => {
   const job = useLoaderData();
   const { user } = use(AuthContext);
+  console.log(user);
   const {
     companyId,
     maximumRate,
@@ -32,6 +33,7 @@ const JobDetails = () => {
   }, []);
 
   // get bidder info
+  console.log("JOb Id", job._id);
 
   useEffect(() => {
     fetch(`http://localhost:5000/bids/jobDetails/${job._id}`)
@@ -59,7 +61,8 @@ const JobDetails = () => {
       deliveryTime: deliveryDay,
       biddingAmount: biddingAmoutInput,
     };
-
+    console.log(user);
+    console.log(biddingInfo);
     // send to the server
     fetch("http://localhost:5000/bids", {
       method: "POST",

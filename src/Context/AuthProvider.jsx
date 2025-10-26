@@ -20,27 +20,41 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // observer
+  const [currentEmail, setCurrentEmail] = useState("");
+
   useEffect(() => {
     const unSubscribed = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // get data from database
-        const userEmail = user.email;
-        fetch(`http://localhost:5000/user/${userEmail}`)
-          .then((res) => res.json())
-          .then((data) => {
-            setUser(data);
-            setLoading(false);
-          })
-          .catch((err) => console.log(err));
+      if (user && user.email) {
+        setCurrentEmail(user.email);
       } else {
+        setCurrentEmail("");
         setUser(null);
         setLoading(false);
       }
     });
-
     return () => unSubscribed();
   }, []);
+
+  // get all users information
+  useEffect(() => {
+    if (currentEmail) {
+      fetch(`http://localhost:5000/users`)
+        .then((res) => res.json())
+        .then((data) => {
+          // setUser(data);
+          console.log(currentEmail);
+          console.log(data);
+          const finalIzeUser = data.find((usr) => usr.email === currentEmail);
+          if (finalIzeUser) {
+            setUser(finalIzeUser);
+          } else {
+            setUser(null);
+          }
+          // stop loading
+          setLoading(false);
+        });
+    }
+  }, [currentEmail]); // currentEmail চেঞ্জ হলে fetch হবে
 
   // sign out method
   const userSignOut = () => {
