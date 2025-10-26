@@ -12,7 +12,6 @@ const WorkEdit = () => {
         setJob(data);
       });
   }, []);
-  console.log(job);
   const handleEdit = (e) => {
     e.preventDefault();
 

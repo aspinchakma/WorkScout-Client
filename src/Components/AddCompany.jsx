@@ -7,7 +7,7 @@ import "./AddCompany.css";
 const AddCompany = () => {
   const { user } = use(AuthContext);
   const { companies, setCompanies } = use(DataContextl);
-  console.log(companies);
+
   const [companyInfo, setCompanyInfo] = useState({
     name: "",
     slogan: "",

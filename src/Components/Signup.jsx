@@ -105,9 +105,11 @@ const Signup = () => {
                   .then((result) => {
                     if (result.insertedId) {
                       Swal.close();
-
                       //setUser
-                      setUser(finalUserInformation);
+                      setUser({
+                        _id: result.insertedId,
+                        ...finalUserInformation,
+                      });
                       Swal.fire({
                         title: "Your Account Created!",
                         icon: "success",
@@ -174,6 +176,10 @@ const Signup = () => {
       }
     } catch (error) {
       console.log(error.code);
+      Swal.fire({
+        title: "Please Change The Photo Formate",
+        icon: "error",
+      });
       Swal.close();
     } finally {
       Swal.close();

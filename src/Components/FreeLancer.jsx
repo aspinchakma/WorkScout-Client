@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const FreeLancer = ({ freelancer, index }) => {
-  console.log(freelancer);
   return (
     <div
       className={`${

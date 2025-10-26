@@ -3,7 +3,6 @@ import FreeLancer from "./FreeLancer";
 
 const AllFreeLancer = () => {
   const freeLancers = useLoaderData();
-  console.log(freeLancers);
   return (
     <div>
       <div className="bg-gray-200">

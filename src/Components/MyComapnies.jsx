@@ -17,7 +17,6 @@ const MyComapnies = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(id);
         fetch(`http://localhost:5000/selectedCompanies/${id}`, {
           method: "DELETE",
           headers: {

@@ -25,6 +25,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribed = onAuthStateChanged(auth, (user) => {
       if (user && user.email) {
+        console.log("inside observer", user);
         setCurrentEmail(user.email);
       } else {
         setCurrentEmail("");
@@ -42,8 +43,6 @@ const AuthProvider = ({ children }) => {
         .then((res) => res.json())
         .then((data) => {
           // setUser(data);
-          console.log(currentEmail);
-          console.log(data);
           const finalIzeUser = data.find((usr) => usr.email === currentEmail);
           if (finalIzeUser) {
             setUser(finalIzeUser);
@@ -56,6 +55,7 @@ const AuthProvider = ({ children }) => {
     }
   }, [currentEmail]); // currentEmail চেঞ্জ হলে fetch হবে
 
+  console.log(user);
   // sign out method
   const userSignOut = () => {
     return signOut(auth);

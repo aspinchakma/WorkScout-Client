@@ -13,7 +13,6 @@ const MyPosts = () => {
         console.log(err);
       });
   }, []);
-  console.log(posts);
   return (
     <div className="w-[90%] lg:w-[77%] mx-auto my-10">
       <div>

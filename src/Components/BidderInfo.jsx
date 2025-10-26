@@ -9,7 +9,6 @@ const BidderInfo = ({ bidder }) => {
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
   }, []);
-  console.log(userInfo);
   return (
     <div className="border-2 border-gray-300 rounded-md p-6">
       <h2 className="text-xl font-semibold">{userInfo?.name}</h2>
