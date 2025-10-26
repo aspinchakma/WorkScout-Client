@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import AuthContext from "../Context/AuthContex";
 import MyWorkDetails from "./MyWorkDetails";
 
@@ -12,6 +13,41 @@ const MyWork = () => {
         setBids(data);
       });
   }, []);
+  const deleteWork = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // delete
+
+        fetch(`http://localhost:5000/bids/${id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              // delete from ui
+              const finalWorks = bids.filter((work) => work._id !== id);
+              setBids(finalWorks);
+            }
+          });
+      }
+    });
+  };
   return (
     <div className="w-[90%] lg:w-[77%] mx-auto my-8">
       {bids.length ? (
@@ -22,7 +58,7 @@ const MyWork = () => {
           </h3>
           <div className="grid grid-cols-1 gap-5">
             {bids?.map((bid) => (
-              <MyWorkDetails key={bid?._id} bid={bid} />
+              <MyWorkDetails key={bid?._id} bid={bid} deleteWork={deleteWork} />
             ))}
           </div>
         </>
