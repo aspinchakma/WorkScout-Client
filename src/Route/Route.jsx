@@ -135,6 +135,9 @@ const Route = createBrowserRouter([
             <FreeLancerProfile />
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/users/userProfile/${params.id}`),
+        hydrateFallbackElement: <Loading />,
       },
     ],
   },
