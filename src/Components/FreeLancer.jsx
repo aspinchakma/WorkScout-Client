@@ -6,7 +6,7 @@ const FreeLancer = ({ freelancer, index }) => {
     <div
       className={`${
         (index + 1) % 2 === 0 ? "bg-[#f9f9f9]" : "bg-white"
-      } grid grid-cols-1 lg:grid-cols-12 p-7 lg:p-8 items-center`}
+      } grid grid-cols-1 lg:grid-cols-12 p-7 lg:p-8 items-center border-l-4 border-l-white hover:border-l-green-700 duration-700 cursor-pointer`}
     >
       <div className="lg:col-span-2">
         <img
@@ -16,7 +16,7 @@ const FreeLancer = ({ freelancer, index }) => {
         />
       </div>
       <div className="lg:col-span-8">
-        <h3 className="text-[26px] font-medium">{freelancer?.name}</h3>
+        <h3 className="text-[23px] font-medium">{freelancer?.name}</h3>
         <p className="text-[17px] text-[#777]">{freelancer?.designation}</p>
         <p className="text-[17px] text-[#777]">{freelancer?.email}</p>
       </div>
