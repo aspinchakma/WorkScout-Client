@@ -55,7 +55,6 @@ const AuthProvider = ({ children }) => {
     }
   }, [currentEmail]); // currentEmail চেঞ্জ হলে fetch হবে
 
-  console.log(user);
   // sign out method
   const userSignOut = () => {
     return signOut(auth);
