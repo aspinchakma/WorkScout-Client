@@ -30,9 +30,7 @@ const Footer = () => {
         </div>
       </footer>
       <div className="divider"></div>
-      <h3 className="text-center">
-        © Theme by Purethemes.net. All Rights Reserved.
-      </h3>
+      <h3 className="text-center">©All Rights Reserved by Aspin Chakma.</h3>
     </div>
   );
 };
